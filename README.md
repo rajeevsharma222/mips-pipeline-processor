@@ -22,6 +22,11 @@ The MIPS32 pipeline processor currently supports the following instructions:
 * `j` - Jump  
 ### Hazard Unit
 The hazard unit is responsible for detecting and resolving data and control hazards. It ensures that the pipeline operates smoothly without conflicts. The unit implements forwarding and stalling mechanisms to handle different types of hazards.
+### Branch Predictor
+The implementation uses a 2-bit bimodal direction predictor (PHT with 2-bit saturating counters) and a small Branch Target Buffer (BTB). Predictor updates happen in the ID stage (where branches are resolved); the IF stage consults the predictor + BTB to fetch a predicted next PC.
+
+<img width="490" height="347" alt="image" src="https://github.com/user-attachments/assets/04326352-b348-43fd-83fb-29d9c973f819" />
+
 ### Datapath
 ![image](https://github.com/sushi0706/mips-pipeline-processor/assets/170224108/920233ca-2555-4a43-9681-acc92356f138)
 
